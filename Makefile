@@ -3,7 +3,7 @@ NAME            = push_swap
 LIBFT_DIR       = ./libft
 LIBFT_LIB       = $(LIBFT_DIR)/libft.a
 
-SOURCES         = 
+SOURCES         = push_swap.c util.c
 OBJECTS         = $(SOURCES:.c=.o)
 
 CC              = cc
