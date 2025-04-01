@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 22:26:18 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/01 22:21:36 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/01 23:11:50 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "libft/libft.h"
 
 typedef struct s_stack

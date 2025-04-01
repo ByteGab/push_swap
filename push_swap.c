@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:01:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/01 22:54:09 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/01 23:13:27 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char *argv[])
 	int nbrs_arg;
 
 	if (argc <= 1)
-		printf("ERROR");
+		printf("ERROR\n");
 	else
 	{
 		// tamaño stack

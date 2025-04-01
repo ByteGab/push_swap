@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 22:14:11 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/01 22:53:54 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/02 00:46:23 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,21 @@ int count_valors(char *argv[],int size)
         z = 0;
         printf("%s ",argv[i]);  
         while (argv[i][z] != '\0')
-        { 
+        {
+            // Error letters
+            if ((argv[i][z] >= 'a' && argv[i][z] >= 'z') || (argv[i][z] >= 'A' && argv[i][z] >= 'Z'))
+            {
+                // Change this !!!!!
+                printf("ERROR\n");
+                exit(EXIT_FAILURE);   
+            }
+            // Error - +
+            if ((argv[i][z] == '-'  || argv[i][z] == '+') && (argv[i][z + 1] < '0' || argv[i][z] > '9'))
+            {
+                // Change this !!!!!
+                printf("ERROR\n");
+                exit(EXIT_FAILURE); 
+            }
             if (argv[i][z] != ' ' && (z == 0 || argv[i][z - 1] == ' '))
                 count++;
             z++;
