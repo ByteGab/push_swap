@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:01:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/01 23:13:27 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/02 01:38:20 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,10 @@ int	main(int argc, char *argv[])
 		// 	printf("%d ", stack_b[i]);
 		// 	i++;
 		// }
-		nbrs_arg = argc;
 		printf("Numero de argumentos sin los string: %d\n",argc -1);
-		count_valors(argv,nbrs_arg);
+		nbrs_arg = count_valors(argv,argc);
+		printf("%d\n",nbrs_arg);
+		start_stack(nbrs_arg);
 	}
 	return (0);
 }
