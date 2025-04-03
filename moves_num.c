@@ -6,24 +6,28 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 22:28:08 by gafreire          #+#    #+#             */
-/*   Updated: 2025/03/29 01:09:13 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/03 19:24:42 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // sa (swap a)
-void	sa(int *stack_a)
+void	sa(t_stack *stack_a)
 {
 	int	swap;
+	t_stack *head;
+
+	head = stack_a;
 
 	/*
 	if (len_stack_a <= 1)
 		return ;
 	*/
-	swap = stack_a[0];
-	stack_a[0] = stack_a[1];
-	stack_a[1] = swap;
+	swap = stack_a->nbr;
+	stack_a->nbr = stack_a->next->nbr;
+	stack_a->next->nbr = swap;
+	stack_a = head;
 	printf("sa\n");
 }
 
@@ -43,7 +47,7 @@ void	sb(int *stack_b)
 }
 
 // ss (swap a and swap b)
-void	ss(int *stack_a, int *stack_b)
+void	ss(t_stack *stack_a, int *stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);
