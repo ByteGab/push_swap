@@ -6,11 +6,52 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:36:50 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/02 23:22:10 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/03 16:48:56 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+long first_index (t_stack *stack,int nbr)
+{
+    long index;
+    t_stack *head;
+    t_stack *search_nbr;
+
+   index = 0;
+    head = stack;
+    while (stack != NULL)
+    {
+        if (nbr > stack->nbr)
+            index++;
+        stack = stack->next;
+    }
+    stack = head;
+    return (index);
+}
+t_stack	*add_nbrs_stack(t_stack *stack,int *nbrs,int size)
+{
+    int i;
+    t_stack *head;
+    
+    i = 0;
+    head = stack;
+    while (i < size)
+    {
+        stack->nbr = nbrs[i];
+        stack = stack->next;
+        i++;
+    }
+    stack = head;
+    i = 0;
+    while (i < size)
+    {
+        stack->index = first_index(head,stack->nbr); // bubble short
+        stack = stack->next;
+        i++;
+    }
+    stack = head;
+    return (stack);
+}
 
 t_stack	*start_stack(int size)
 {
