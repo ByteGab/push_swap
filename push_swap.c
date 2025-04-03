@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:01:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/02 01:38:20 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/03 01:51:25 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int	main(int argc, char *argv[])
 {
-	// t_stack *stack_a;
+	t_stack *stack_a;
 	// t_stack *stack_b;
 	int nbrs_arg;
+	int	*nbrs;
 
 	if (argc <= 1)
 		printf("ERROR\n");
@@ -76,8 +77,18 @@ int	main(int argc, char *argv[])
 		// }
 		printf("Numero de argumentos sin los string: %d\n",argc -1);
 		nbrs_arg = count_valors(argv,argc);
-		printf("%d\n",nbrs_arg);
-		start_stack(nbrs_arg);
+		// init stack
+		stack_a = start_stack(nbrs_arg);
+		// free stack_a
+		// while (stack_a != NULL)
+		// {
+		// 	printf("%d\n",stack_a->nbr);
+		// 	printf("%d\n",stack_a->index);
+		// 	stack_a = stack_a->next;
+		// }
+		nbrs = (int *)malloc((nbrs_arg + 1) * sizeof(int));
+		// free array nbrs
+		nbrs = add_nbrs(argc,argv,nbrs,nbrs_arg);
 	}
 	return (0);
 }
