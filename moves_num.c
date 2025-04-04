@@ -6,48 +6,44 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 22:28:08 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/03 19:24:42 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/04 02:11:22 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // sa (swap a)
-void	sa(t_stack *stack_a)
+t_stack	*sa(t_stack *stack_a)
 {
-	int	swap;
-	t_stack *head;
+	t_stack	*swap;
 
-	head = stack_a;
+	if (!stack_a || !stack_a->next)
+		return (stack_a);
 
-	/*
-	if (len_stack_a <= 1)
-		return ;
-	*/
-	swap = stack_a->nbr;
-	stack_a->nbr = stack_a->next->nbr;
-	stack_a->next->nbr = swap;
-	stack_a = head;
+	swap = stack_a;
+	stack_a = stack_a->next;
+	swap->next = stack_a->next;
+	stack_a->next = swap;
 	printf("sa\n");
+	return(stack_a);
 }
 
 // sb (swap b)
-void	sb(int *stack_b)
+void	sb(t_stack *stack_b)
 {
 	int	swap;
-
 	/*
 	if (len_stack_b <= 1)
 		return ;
 	*/
-	swap = stack_b[0];
-	stack_b[0] = stack_b[1];
-	stack_b[1] = swap;
+	swap = stack_b->nbr;
+	stack_b->nbr = stack_b->next->nbr;
+	stack_b->next->nbr = swap;
 	printf("sb\n");
 }
 
 // ss (swap a and swap b)
-void	ss(t_stack *stack_a, int *stack_b)
+void	ss(t_stack *stack_a, t_stack *stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);
@@ -104,23 +100,26 @@ void	pb(int *stack_a, int *stack_b)
 }
 
 // ra (rotate a)
-void	ra(int *stack_a)
+t_stack	*ra(t_stack *stack_a)
 {
-	int	swap;
-	int	len;
-	int	i;
+	t_stack *head;
+    t_stack *last_stack;
 
-	len = 0;
-	i = len;
-	while (i != 0)
-	{
-		swap = stack_a[i];
-		stack_a[i - 1] = stack_a[i];
-		i--;
-	}
-	if (i == 0)
-		stack_a[len] = stack_a[i];
-	printf("ra");
+    if (!stack_a || !stack_a->next) // stack_a < 2
+        return stack_a;
+
+    head = stack_a;
+    stack_a = stack_a->next;
+    last_stack = stack_a;
+
+    while (last_stack->next != NULL)
+        last_stack = last_stack->next;
+
+    last_stack->next = head;
+    head->next = NULL;
+
+    printf("ra\n");
+    return (stack_a);
 }
 // rb (rotate b)
 void	rb(int *stack_b)
@@ -142,30 +141,40 @@ void	rb(int *stack_b)
 	printf("rb");
 }
 // rr (ra and rb)
-void	rr(int *a, int *b)
+void	rr(t_stack *stack_a, int *b)
 {
-	ra(a);
+	ra(stack_a);
 	rb(b);
 	printf("rr");
 }
 
 // rra (reverse rotate a)
-void	rra(int *stack_a)
-{
-	int	swap;
-	int	len;
-	int	i;
+t_stack	*rra(t_stack *stack_a)
+{ 
+	// arreglar
+	t_stack *head;
+    t_stack *last_stack;
+	t_stack *antlast_stack;
 
-	i = 0;
-	if (i == 0)
-		stack_a[0] = stack_a[len];
-	while (i <= len)
-	{
-		swap = stack_a[i];
-		stack_a[i + 1] = stack_a[i];
-		i++;
-	}
-	printf("rra");
+    if (!stack_a || !stack_a->next) // stack_a < 2
+        return stack_a;
+
+    head = stack_a;
+    stack_a = stack_a->next;
+    last_stack = stack_a;
+	antlast_stack = stack_a;
+
+    while (last_stack->next != NULL)
+        last_stack = last_stack->next;
+	while (antlast_stack->next->next != NULL)
+        antlast_stack = antlast_stack->next;
+
+	antlast_stack->next = NULL;
+    last_stack->next = head;
+    stack_a = last_stack;
+
+    printf("rra\n");
+    return (stack_a);
 }
 
 // rrb (reverse rotate b)
@@ -187,7 +196,7 @@ void	rrb(int *stack_b)
 	printf("rrb");
 }
 
-void	rrr(int *stack_a, int *stack_b)
+void	rrr(t_stack *stack_a, int *stack_b)
 {
 	rra(stack_a);
 	rrb(stack_b);
