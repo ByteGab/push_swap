@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 22:28:08 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/05 02:05:41 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/05 23:50:12 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,16 @@ void	sa(t_stacks *stacks, int flag)
 	if (!stacks->stack_a || !stacks->stack_a->next)
 	{
 		printf("Vacio stacks->stack_a\n");
-		// return (stacks->stack_a);
+		return ;
 	}
 	swap = stacks->stack_a;
-	// printf("boiba temporal %d \n", swap->nbr);
 	stacks->stack_a = stacks->stack_a->next;
-	// printf("boiba new cabeza  %d \n", stacks->stack_a->nbr);
 	nxt = stacks->stack_a->next;
-	// printf("boiba ter0  %d \n", nxt->nbr);
 	stacks->stack_a->next = swap;
 	swap->next = nxt;
-	// while (stacks->stack_a != NULL)
-	// 	{
-	// 		printf("num = %d ", stacks->stack_a->nbr);
-	// 		printf("i = %d \n", stacks->stack_a->index);
-	// 		stacks->stack_a = stacks->stack_a->next;
-	// 		sabe++;
-	// 	}
-	// printf("sab %d\n ", sabe);
 	if (flag == 1)
 		printf("sa\n");
-	// return (stacks->stack_a);
 }
-
 // sb (swap b)
 void	sb(t_stacks *stacks, int flag)
 {
@@ -53,7 +40,7 @@ void	sb(t_stacks *stacks, int flag)
 	if (!stacks->stack_b || !stacks->stack_b->next)
 	{
 		printf("Vacio stacks->stack_b\n");
-		exit(EXIT_FAILURE);
+		return ;
 	}
 	swap = stacks->stack_b;
 	stacks->stack_b = stacks->stack_b->next;
@@ -62,7 +49,6 @@ void	sb(t_stacks *stacks, int flag)
 	swap->next = nxt;
 	if (flag == 1)
 		printf("sb\n");
-	// return (stacks->stack_a);
 }
 // ss (swap a and swap b)
 void	ss(t_stacks *stacks)
@@ -71,14 +57,58 @@ void	ss(t_stacks *stacks)
 	sb(stacks, 0);
 	printf("ss\n");
 }
+
+// pa (push a)
+void	pa(t_stacks *stacks)
+{
+	t_stack *swap;
+
+    if (!stacks->stack_b) // Si la pila A está vacía, no se hace nada.
+        return;
+
+    // Guardamos el nodo superior de stack_a.
+    swap = stacks->stack_b;
+
+    // Actualizamos stack_a para que apunte al siguiente nodo.
+    stacks->stack_b = stacks->stack_b->next;
+
+    // Insertamos el nodo en la cabecera de stack_b.
+    swap->next = stacks->stack_a;
+    stacks->stack_a = swap;
+	printf("pa\n");
+}
+
+// pb (push b)
+void	pb(t_stacks *stacks)
+{
+	t_stack *swap;
+
+    if (!stacks->stack_a) // Si la pila A está vacía, no se hace nada.
+        return ;
+
+    // Guardamos el nodo superior de stack_a.
+    swap = stacks->stack_a;
+
+    // Actualizamos stack_a para que apunte al siguiente nodo.
+    stacks->stack_a = stacks->stack_a->next;
+
+    // Insertamos el nodo en la cabecera de stack_b.
+    swap->next = stacks->stack_b;
+    stacks->stack_b = swap;
+	printf("pb\n");
+}
+
 // ra (rotate a)
-void	ra(t_stacks *stacks)
+void	ra(t_stacks *stacks, int flag)
 {
 	t_stack	*head;
 	t_stack	*last_stack;
 
 	if (!stacks->stack_a || !stacks->stack_a->next) // stacks->stack_a < 2
+	{
 		printf("Vacio stacks->stack_a\n");
+		return ;
+	}
 	head = stacks->stack_a;
 	stacks->stack_a = stacks->stack_a->next;
 	last_stack = stacks->stack_a;
@@ -86,83 +116,38 @@ void	ra(t_stacks *stacks)
 		last_stack = last_stack->next;
 	last_stack->next = head;
 	head->next = NULL;
-	printf("ra\n");
+	if (flag == 1)
+		printf("ra\n");
 }
 
-// // pa (push a)
-// void	pa(int *stacks->stack_a, int *stack_b)
-// {
-// 	int	swap;
-// 	int	i;
+// rb (rotate b)
+void	rb(t_stacks *stacks, int flag)
+{
+	t_stack	*head;
+	t_stack	*last_stack;
 
-// 	int len = 5; // cambiar
-// 	i = 1;
-// 	if (stack_b == NULL)
-// 		return ;
-// 	else
-// 	{
-// 		swap = stacks->stack_a[i];
-// 		stacks->stack_a[0] = stack_b[0];
-// 		stack_b[0] = 0;
-// 		stacks->stack_a[1] = swap;
-// 		len++;
-// 		while (i < len)
-// 		{
-// 			stacks->stack_a[i] = stacks->stack_a[i + 1];
-// 			i++;
-// 		}
-// 	}
-// 	printf("pa\n");
-// }
-
-// // pb (push b)
-// void	pb(int *stacks->stack_a, int *stack_b)
-// {
-// 	int	swap;
-// 	int	i;
-// 	int	len;
-
-// 	if (stacks->stack_a == NULL)
-// 		return ;
-// 	else
-// 	{
-// 		stack_b[0] = stacks->stack_a[0];
-// 		while (i < len)
-// 		{
-// 			swap = stack_b[i];
-// 			stack_b[i + 1] = stack_b[i];
-// 			i++;
-// 		}
-// 	}
-// 	printf("pb");
-// }
-
-// // rb (rotate b)
-// void	rb(int *stack_b)
-// {
-// 	int	swap;
-// 	int	len;
-// 	int	i;
-
-// 	len = 0;
-// 	i = len;
-// 	while (i != 0)
-// 	{
-// 		swap = stack_b[i];
-// 		stack_b[i - 1] = stack_b[i];
-// 		i--;
-// 	}
-// 	if (i == 0)
-// 		stack_b[len] = stack_b[i];
-// 	printf("rb");
-// }
-// // rr (ra and rb)
-// void	rr(t_stack *stacks->stack_a, int *b)
-// {
-// 	ra(stacks->stack_a);
-// 	rb(b);
-// 	printf("rr");
-// }
+	if (!stacks->stack_b || !stacks->stack_b->next) // stacks->stack_a < 2
+	{
+		printf("Vacio stacks->stack_b\n");
+		return ;
+	}
+	head = stacks->stack_b;
+	stacks->stack_b = stacks->stack_b->next;
+	last_stack = stacks->stack_b;
+	while (last_stack->next != NULL)
+		last_stack = last_stack->next;
+	last_stack->next = head;
+	head->next = NULL;
+	if (flag == 1)
+		printf("rb\n");
+}
+// rr (ra and rb)
+void	rr(t_stacks *stacks)
+{
+	ra(stacks, 0);
+	rb(stacks, 0);
+	printf("rr\n");
+}
 
 // // rra (reverse rotate a)
 // t_stack	*rra(t_stack *stacks->stack_a)
