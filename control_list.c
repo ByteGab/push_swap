@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:36:50 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/03 16:48:56 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/07 01:46:53 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@ long first_index (t_stack *stack,int nbr)
 {
     long index;
     t_stack *head;
-    t_stack *search_nbr;
 
    index = 0;
     head = stack;
@@ -28,6 +27,7 @@ long first_index (t_stack *stack,int nbr)
     stack = head;
     return (index);
 }
+
 t_stack	*add_nbrs_stack(t_stack *stack,int *nbrs,int size)
 {
     int i;
