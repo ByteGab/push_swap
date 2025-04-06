@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 22:26:18 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/05 22:04:38 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/06 19:50:05 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,19 @@ typedef struct s_stacks
 	int				size_b;
 }					t_stacks;
 
+// moves
 void				sa(t_stacks *stacks, int flag);
 void				sb(t_stacks *stacks, int flag);
 void				ss(t_stacks *stacks);
 void				pa(t_stacks *stacks);
 void				pb(t_stacks *stacks);
-
-
-
 void				ra(t_stacks *stacks, int flag);
 void				rb(t_stacks *stacks, int flag);
 void				rr(t_stacks *stacks);
+void				rra(t_stacks *stacks, int flag);
+void				rrb(t_stacks *stacks, int flag);
+void				rrr(t_stacks *stacks);
+
 int					count_valors(char *argv[], int size);
 t_stack				*start_stack(int size);
 int					*add_nbrs(int argc, char **argv, int *nbrs, int nbrs_arg);

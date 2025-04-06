@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:01:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/05 23:52:25 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/06 19:50:43 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,15 +109,24 @@ int	main(int argc, char *argv[])
 		// prueba ra
 		ra(stacks, 1);
 		temp_a = stacks->stack_a;
-		while (stacks->stack_a != NULL)
+		while (temp_a != NULL)
 		{
-			printf("Numero: %d", stacks->stack_a->nbr);
-			printf("   Indice: %ld", stacks->stack_a->index);
+			printf("Numero: %d", temp_a->nbr);
+			printf("   Indice: %ld", temp_a->index);
 			printf("\n");
-			stacks->stack_a = stacks->stack_a->next;
+			temp_a = temp_a->next;
 		}
 		// prueba rb
 		rb(stacks,1);
+		temp_a = stacks->stack_a;
+		while (temp_a != NULL)
+		{
+			printf("Numero: %d", temp_a->nbr);
+			printf("   Indice: %ld", temp_a->index);
+			printf("\n");
+			temp_a = temp_a->next;
+		}
+		printf("\n");
 		temp_b = stacks->stack_b;
 		while (temp_b != NULL)
 		{
@@ -126,25 +135,54 @@ int	main(int argc, char *argv[])
 			printf("\n");
 			temp_b = temp_b->next;
 		}
-		printf("hola\n");
-		temp_a = stacks->stack_a;
-		while (stacks->stack_a != NULL)
-		{
-			printf("Numero: %d", stacks->stack_a->nbr);
-			printf("   Indice: %ld", stacks->stack_a->index);
-			printf("\n");
-			stacks->stack_a = stacks->stack_a->next;
-		}
 		// prueba rr
 		rr(stacks);
 		temp_a = stacks->stack_a;
-		while (stacks->stack_a != NULL)
+		while (temp_a != NULL)
 		{
-			printf("Numero: %d", stacks->stack_a->nbr);
-			printf("   Indice: %ld", stacks->stack_a->index);
+			printf("Numero: %d", temp_a->nbr);
+			printf("   Indice: %ld", temp_a->index);
 			printf("\n");
-			stacks->stack_a = stacks->stack_a->next;
+			temp_a = temp_a->next;
 		}
+		printf("\n");
+		temp_b = stacks->stack_b;
+		while (temp_b != NULL)
+		{
+			printf("Numero: %d", temp_b->nbr);
+			printf("   Indice: %ld", temp_b->index);
+			printf("\n");
+			temp_b = temp_b->next;
+		}
+		rra(stacks,1);
+		temp_a = stacks->stack_a;
+		while (temp_a != NULL)
+		{
+			printf("Numero: %d", temp_a->nbr);
+			printf("   Indice: %ld", temp_a->index);
+			printf("\n");
+			temp_a = temp_a->next;
+		}
+		pb(stacks);
+		rrb(stacks,1);
+		temp_b = stacks->stack_b;
+		while (temp_b != NULL)
+		{
+			printf("Numero: %d", temp_b->nbr);
+			printf("   Indice: %ld", temp_b->index);
+			printf("\n");
+			temp_b = temp_b->next;
+		}
+		rrr(stacks);
+		temp_a = stacks->stack_a;
+		while (temp_a != NULL)
+		{
+			printf("Numero: %d", temp_a->nbr);
+			printf("   Indice: %ld", temp_a->index);
+			printf("\n");
+			temp_a = temp_a->next;
+		}
+		printf("\n");
 		temp_b = stacks->stack_b;
 		while (temp_b != NULL)
 		{
@@ -154,39 +192,6 @@ int	main(int argc, char *argv[])
 			temp_b = temp_b->next;
 		}
 		exit(0);
-		// prueba rb
-
-		// stack_a = head;
-		// // prueba rra
-		// stack_a = rra(stack_a);
-		// head = stack_a;
-		// while (stack_a != NULL)
-		// {
-		// 	printf("Numero: %d", stack_a->nbr);
-		// 	printf("   Indice: %ld", stack_a->index);
-		// 	printf("\n");
-		// 	stack_a = stack_a->next;
-		// }
-
-		// // prueba sb
-		// stack_b = sb(stack_b, 1);
-		// head_b = stack_b;
-		// while (stack_b != NULL)
-		// {
-		// 	printf("Numero: %d", stack_b->nbr);
-		// 	printf("   Indice: %ld", stack_b->index);
-		// 	printf("\n");
-		// 	stack_b = stack_b->next;
-		// }
-		// stack_a = head;
-		// stacks->stack_a = stack_a;
-		// while (stacks->stack_a != NULL)
-		// {
-		// 	printf("Numero: %d", stacks->stack_a->nbr);
-		// 	printf("   Indice: %ld", stacks->stack_a->index);
-		// 	printf("\n");
-		// 	stacks->stack_a = stacks->stack_a->next;
-		// }
 	}
 	return (0);
 }
