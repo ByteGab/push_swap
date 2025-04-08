@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:01:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/07 00:01:18 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/08 02:53:57 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char *argv[])
 {
 	t_stack *temp_a;
-	t_stack *temp_b;
+	// t_stack *temp_b;
 	t_stacks *stacks;
 	int nbrs_arg;
 	int *nbrs;
@@ -37,9 +37,26 @@ int	main(int argc, char *argv[])
 		stacks->stack_b = start_stack(0);
 		// free stack_a
 		nbrs = (int *)malloc((nbrs_arg + 1) * sizeof(int));
+		if (!nbrs)
+			free(nbrs);
 		// free array nbrs
 		nbrs = add_nbrs(argc, argv, nbrs, nbrs_arg);
 		stacks->stack_a = add_nbrs_stack(stacks->stack_a, nbrs, nbrs_arg);
+		printf("-----------------------------------------------------------\n");
+		sort_stack(stacks, nbrs_arg);
+		temp_a = stacks->stack_a;
+		while (temp_a != NULL)
+		{
+			printf("Numero: %d", temp_a->nbr);
+			printf("   Indice: %ld", temp_a->index);
+			printf("\n");
+			temp_a = temp_a->next;
+		}
+		// free
+		free(nbrs);
+		free(stacks->stack_a);
+		free(stacks->stack_b);
+		free(stacks);
 	}
 	return (0);
 }

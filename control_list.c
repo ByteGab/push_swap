@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:36:50 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/07 01:46:53 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/08 00:41:57 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ t_stack	*start_stack(int size)
 	while (i < size)
 	{
 		new_node = (t_stack *)malloc(sizeof(t_stack));
-		// if (!new_stack)
-		//     free();
+		if (!new_node)
+		    free(head);
         new_node->nbr = 0;
         new_node->index = -1;
 		new_node->next = NULL;
