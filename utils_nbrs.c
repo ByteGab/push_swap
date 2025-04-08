@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 23:58:32 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/07 01:47:11 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/08 00:29:18 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	repeat_nbrs(int *nbr, int size)
 	}
 }
 
-int	check_nbrs(char **nbrs_str, char *nbrs, int *nubr)
+int	check_nbrs(char *nbrs)
 {
 	long	nbr_long;
 	int		nbr;
@@ -98,11 +98,12 @@ int	*add_nbrs(int argc, char **argv, int *nbrs, int nbrs_arg)
 
 		while (total_nbrs[j] != NULL)
 		{
-			nbrs[z] = check_nbrs(total_nbrs, total_nbrs[j], nbrs);
+			nbrs[z] = check_nbrs(total_nbrs[j]);
 			j++;
 			z++;
 		}
 		// free total_nbrs
+		free_nbrs(total_nbrs);
 		i++;
 	}
 	nbrs[z] = '\0';
