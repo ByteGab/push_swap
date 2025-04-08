@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 22:26:18 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/06 19:50:05 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/08 02:27:56 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,15 @@ void				rra(t_stacks *stacks, int flag);
 void				rrb(t_stacks *stacks, int flag);
 void				rrr(t_stacks *stacks);
 
+// create stacks
 int					count_valors(char *argv[], int size);
 t_stack				*start_stack(int size);
 int					*add_nbrs(int argc, char **argv, int *nbrs, int nbrs_arg);
-int					check_nbrs(char **nbrs_str, char *nbrs, int *nubr);
+int					check_nbrs(char *nbrs);
 t_stack				*add_nbrs_stack(t_stack *stack, int *nbrs, int size);
 
+// algorithm
+void				sort_stack(t_stacks *stacks, int size);
+// freess
+void				free_nbrs(char **nbrs);
 #endif
