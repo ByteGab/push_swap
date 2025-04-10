@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 22:26:18 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/08 05:42:48 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/10 05:49:05 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 typedef struct s_stack
 {
 	int				nbr;
-	long			index;
+	int				index;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -54,7 +54,9 @@ int					check_nbrs(char *nbrs);
 t_stack				*add_nbrs_stack(t_stack *stack, int *nbrs, int size);
 
 // algorithm
-void				sort_stack(t_stacks *stacks, int size);
+void				check_stack(t_stacks *stacks, int size);
+void				sort_three(t_stacks *stacks);
+void				sort_stacks(t_stacks *stacks);
 // freess
 void				free_nbrs(char **nbrs);
 #endif

@@ -6,14 +6,14 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:36:50 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/08 00:41:57 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/10 01:12:38 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-long first_index (t_stack *stack,int nbr)
+int first_index (t_stack *stack,int nbr)
 {
-    long index;
+    int index;
     t_stack *head;
 
    index = 0;
@@ -61,7 +61,7 @@ t_stack	*start_stack(int size)
 	t_stack *new_node; // new node
 
     head = NULL;
-    printf("Tamaño lista: %d\n", size);
+    // printf("Tamaño lista: %d\n", size);
 	i = 0;
 	while (i < size)
 	{
