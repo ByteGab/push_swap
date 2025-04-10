@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 02:22:32 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/10 06:30:47 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/10 07:31:50 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ void	sort_stacks(t_stacks *stacks)
 	//     pb(stacks);
 	while (stacks->size_a != 3)
 	{
+        // printf("%d\n",stacks->size_b);
+        if (stacks->size_b == 3)
+            sort_three_b(stacks);
 		pb(stacks);
 		ft_strlen_stack(stacks);
 	}

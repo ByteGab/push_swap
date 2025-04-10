@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 02:17:58 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/10 06:21:31 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/10 07:25:41 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,18 @@ void	sort_three(t_stacks *stacks)
 		rra(stacks, 1);
 	if (stacks->stack_a->nbr > stacks->stack_a->next->nbr)
 		sa(stacks, 1);
+}
+void	sort_three_b(t_stacks *stacks)
+{
+	int index_max;
+
+	index_max = max_stack(stacks->stack_b);
+	if (stacks->stack_b->index == index_max)
+		rb(stacks, 1);
+	else if (stacks->stack_b->next->index == index_max)
+		rrb(stacks, 1);
+	if (stacks->stack_b->nbr > stacks->stack_b->next->nbr)
+		sb(stacks, 1);
 }
 
 // void sort_cuatro(t_stacks *stacks)

@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 22:26:18 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/10 05:49:05 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/10 07:26:40 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ t_stack				*add_nbrs_stack(t_stack *stack, int *nbrs, int size);
 void				check_stack(t_stacks *stacks, int size);
 void				sort_three(t_stacks *stacks);
 void				sort_stacks(t_stacks *stacks);
+int					max_stack(t_stack *stack_a);
+void				sort_three_b(t_stacks *stacks);
 // freess
 void				free_nbrs(char **nbrs);
 #endif
