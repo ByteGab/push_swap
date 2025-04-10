@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 22:14:11 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/07 01:46:31 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/10 01:15:03 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	count_valors(char *argv[], int size)
 	while (i < size)
 	{
 		z = 0;
-		printf("%s ", argv[i]);
+		// printf("%s ", argv[i]);
 		while (argv[i][z] != '\0')
 		{
 			if (argv[i][z] != ' ')
@@ -51,7 +51,7 @@ int	count_valors(char *argv[], int size)
 		}
 		i++;
 	}
-	printf("\n");
-	printf("Total de números: %d\n", count);
+	// printf("\n");
+	// printf("Total de números: %d\n", count);
 	return (count);
 }

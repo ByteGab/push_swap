@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 23:58:32 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/08 00:29:18 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/10 01:16:28 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	check_nbrs(char *nbrs)
         exit(EXIT_FAILURE);
     }
 	nbr = ft_atoi(nbrs);
-	printf("%d ", nbr);
+	// printf("%d ", nbr);
 	return (nbr);
 }
 
@@ -90,7 +90,7 @@ int	*add_nbrs(int argc, char **argv, int *nbrs, int nbrs_arg)
 
 	i = 1;
 	z = 0;
-	printf("Numeros en int: ");
+	// printf("Numeros en int: ");
 	while (i < argc)
 	{
 		j = 0;
@@ -107,7 +107,7 @@ int	*add_nbrs(int argc, char **argv, int *nbrs, int nbrs_arg)
 		i++;
 	}
 	nbrs[z] = '\0';
-	printf("\n");
+	// printf("\n");
 	repeat_nbrs(nbrs, nbrs_arg);
 	return (nbrs);
 }
