@@ -38,4 +38,5 @@ void	pb(t_stacks *stacks)
 	swap->next = stacks->stack_b;
 	stacks->stack_b = swap;
 	printf("pb\n");
+	printf("prueba");
 }
