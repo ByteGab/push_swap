@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 22:26:18 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/10 07:26:40 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/13 05:29:05 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,31 @@ t_stack				*start_stack(int size);
 int					*add_nbrs(int argc, char **argv, int *nbrs, int nbrs_arg);
 int					check_nbrs(char *nbrs);
 t_stack				*add_nbrs_stack(t_stack *stack, int *nbrs, int size);
+void				ft_strlen_stack(t_stacks *stacks);
+int					find_index_a(t_stacks *stacks, int nbr);
+int					find_index_b(t_stacks *stacks, int nbr);
 
 // algorithm
-void				check_stack(t_stacks *stacks, int size);
+void				check_stack(t_stacks *stacks);
 void				sort_three(t_stacks *stacks);
 void				sort_stacks(t_stacks *stacks);
 int					max_stack(t_stack *stack_a);
+int					min_stack(t_stack *stack_a);
 void				sort_three_b(t_stacks *stacks);
+void				sort_b(t_stacks *stacks);
+void				sort_a(t_stacks *stacks);
+int					case_rarb(t_stacks *stacks, int c);
+int					case_rarrb(t_stacks *stacks, int c);
+int					case_rrarrb(t_stacks *stacks, int c);
+int					case_rarrb(t_stacks *stacks, int c);
+int					case_rrarb(t_stacks *stacks, int c);
+int					apply_rarb(t_stacks *stacks, int c, char s);
+int					apply_rrarrb(t_stacks *stacks, int c, char s);
+int					apply_rarrb(t_stacks *stacks, int c, char s);
+int					apply_rrarb(t_stacks *stacks, int c, char s);
+
+int					find_place_a(t_stacks *stacks, int nbr_push);
+int					find_place_b(t_stacks *stacks, int nbr_push);
 // freess
 void				free_nbrs(char **nbrs);
 #endif
