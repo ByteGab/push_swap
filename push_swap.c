@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:01:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/10 03:21:30 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/13 02:34:51 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(int argc, char *argv[])
 {
-	// t_stack *temp_a;
-	// t_stack *temp_b;
+	t_stack *temp_a;
+	t_stack *temp_b;
 	t_stacks *stacks;
 	int nbrs_arg;
 	int *nbrs;
@@ -43,15 +43,24 @@ int	main(int argc, char *argv[])
 		nbrs = add_nbrs(argc, argv, nbrs, nbrs_arg);
 		stacks->stack_a = add_nbrs_stack(stacks->stack_a, nbrs, nbrs_arg);
 		// printf("-----------------------------------------------------------\n");
-		check_stack(stacks, nbrs_arg);
-		// temp_a = stacks->stack_a;
-		// while (temp_a != NULL)
-		// {
-		// 	printf("Numero: %d", temp_a->nbr);
-		// 	printf("   Indice: %d", temp_a->index);
-		// 	printf("\n");
-		// 	temp_a = temp_a->next;
-		// }
+		check_stack(stacks); // remove nbrs_arg i guess ???
+		temp_a = stacks->stack_a;
+		while (temp_a != NULL)
+		{
+			printf("Numero: %d", temp_a->nbr);
+			printf("   Indice: %d", temp_a->index);
+			printf("\n");
+			temp_a = temp_a->next;
+		}
+		printf("\n");
+		temp_b = stacks->stack_b;
+		while (temp_b != NULL)
+		{
+			printf("Numero: %d", temp_b->nbr);
+			printf("   Indice: %d", temp_b->index);
+			printf("\n");
+			temp_b = temp_b->next;
+		}
 
 		// free
 		free(nbrs);
