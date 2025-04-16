@@ -6,18 +6,22 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 02:22:32 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/15 12:03:44 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/16 22:24:11 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 int	max_stack(t_stack *stack_a) // change names variables
+int	max_stack(t_stack *stack_a) // change names variables
 {
     int min_a;
     min_a = stack_a->nbr;
+    min_a = stack_a->nbr;
     while (stack_a != NULL)
 	{
+		if (stack_a->nbr > min_a)
+			min_a = stack_a->nbr;
 		if (stack_a->nbr > min_a)
 			min_a = stack_a->nbr;
 		stack_a = stack_a->next;
@@ -26,11 +30,15 @@ int	max_stack(t_stack *stack_a) // change names variables
 }
 
 int	min_stack(t_stack *stack_a) // change names variables
+int	min_stack(t_stack *stack_a) // change names variables
 {
     int max_a;
     max_a = stack_a->nbr;
+    max_a = stack_a->nbr;
     while (stack_a != NULL)
 	{
+		if (stack_a->nbr < max_a)
+            max_a = stack_a->nbr;
 		if (stack_a->nbr < max_a)
             max_a = stack_a->nbr;
 		stack_a = stack_a->next;
@@ -63,6 +71,9 @@ void	ft_strlen_stack(t_stacks *stacks)
 }
 void	sort_stacks(t_stacks *stacks)
 {
+	int i;
+
+	i = 0;
 	int i;
 
 	i = 0;
