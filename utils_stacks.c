@@ -6,33 +6,33 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 02:22:32 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/10 07:31:50 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/15 12:03:44 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	max_stack(t_stack *stack_a)
+int	max_stack(t_stack *stack_a) // change names variables
 {
     int min_a;
-    min_a = stack_a->index;
+    min_a = stack_a->nbr;
     while (stack_a != NULL)
 	{
-		if (stack_a->index > min_a)
-			min_a = stack_a->index;
+		if (stack_a->nbr > min_a)
+			min_a = stack_a->nbr;
 		stack_a = stack_a->next;
 	}
     return (min_a);
 }
 
-int	min_stack(t_stack *stack_a)
+int	min_stack(t_stack *stack_a) // change names variables
 {
     int max_a;
-    max_a = stack_a->index;
+    max_a = stack_a->nbr;
     while (stack_a != NULL)
 	{
-		if (stack_a->index < max_a)
-            max_a = stack_a->index;
+		if (stack_a->nbr < max_a)
+            max_a = stack_a->nbr;
 		stack_a = stack_a->next;
 	}
     return (max_a);
@@ -63,36 +63,28 @@ void	ft_strlen_stack(t_stacks *stacks)
 }
 void	sort_stacks(t_stacks *stacks)
 {
+	int i;
+
+	i = 0;
 	ft_strlen_stack(stacks);
-
-	// printf("Size sack_a: %d\n",stacks->size_a);
-	// printf("Size sack_b: %d\n",stacks->size_b);
-
-	// if (stacks->size_a > 3) // check cost moves
-	//     pb(stacks);
-	while (stacks->size_a != 3)
+	// first sort
+	sort_b(stacks);
+	// printf("sort_b\n");
+	// ft_sort_a
+	sort_a(stacks);
+	// printf("sort_a\n");
+	i = find_place_a(stacks,min_stack(stacks->stack_a));
+	ft_strlen_stack(stacks);
+	print_stack(stacks->stack_a,"stack a");
+	if (i < stacks->size_a - i)
 	{
-        // printf("%d\n",stacks->size_b);
-        if (stacks->size_b == 3)
-            sort_three_b(stacks);
-		pb(stacks);
-		ft_strlen_stack(stacks);
+		while (stacks->stack_a->nbr != min_stack(stacks->stack_a))
+			ra(stacks,1);
+		
 	}
-	sort_three(stacks);
-	ft_strlen_stack(stacks);
-    
-	// printf("int min_a: %d\n", min_stack(stacks->stack_a));
-	// printf("int min_b: %d\n", min_stack(stacks->stack_b));
-    // printf("int max_a: %d\n", max_stack(stacks->stack_a));
-	// printf("int max_a: %d\n", max_stack(stacks->stack_b));
-
-	while (stacks->size_b != 0)
+	else
 	{
-		pa(stacks);
-		ft_strlen_stack(stacks);
+		while (stacks->stack_a->nbr != min_stack(stacks->stack_a))
+			rra(stacks,1);
 	}
-	ft_strlen_stack(stacks);
-
-	// printf("Size sack_a: %d\n",stacks->size_a);
-	// printf("Size sack_b: %d\n",stacks->size_b);
 }

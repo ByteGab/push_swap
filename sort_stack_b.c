@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 05:57:57 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/13 07:07:19 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/15 07:45:42 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	check_sort(t_stack *stack_a)
 {
 	int	i;
 
+	i = 0;
 	while (stack_a)
 	{
 		if (i > stack_a->nbr)

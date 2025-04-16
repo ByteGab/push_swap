@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:36:50 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/10 01:12:38 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/14 21:36:37 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_stack	*start_stack(int size)
 	t_stack *new_node; // new node
 
     head = NULL;
+    current = NULL;
     // printf("Tamaño lista: %d\n", size);
 	i = 0;
 	while (i < size)

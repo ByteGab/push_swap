@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 23:54:57 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/06 23:55:56 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/15 09:36:23 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ void	pa(t_stacks *stacks)
 	stacks->stack_b = stacks->stack_b->next;
 	swap->next = stacks->stack_a;
 	stacks->stack_a = swap;
+
+	stacks->size_a++; // Actualiza los tamaños
+    stacks->size_b--;
 	printf("pa\n");
 }
 
@@ -37,5 +40,8 @@ void	pb(t_stacks *stacks)
 	stacks->stack_a = stacks->stack_a->next;
 	swap->next = stacks->stack_b;
 	stacks->stack_b = swap;
+
+	stacks->size_a--; // Actualiza los tamaños
+    stacks->size_b++;
 	printf("pb\n");
 }

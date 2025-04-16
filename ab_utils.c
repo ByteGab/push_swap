@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 06:35:40 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/13 09:07:22 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/16 22:04:53 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 int	find_index_a(t_stacks *stacks, int nbr)
 {
-	int		i;
-	t_stack	*temp;
+	int i = 0;
+    t_stack *temp = stacks->stack_a;
 
-	temp = stacks->stack_a;
-	i = 0;
-	while (temp->nbr != nbr)
-	{
-		i++;
-		temp = temp->next;
-	}
-	// temp->index = 0;
-	return (i);
+    if (!temp) // Verifica si stack_a está vacío
+        return (-1); // Devuelve -1 si la pila está vacía
+
+    while (temp)
+    {
+        if (temp->nbr == nbr) // Si encuentras el número, devuelve el índice
+            return (i);
+        i++;
+        temp = temp->next; // Avanza al siguiente nodo
+    }
+
+    return (-1); // Devuelve -1 si el número no se encuentra en stack_a
 }
 int	find_index_b(t_stacks *stacks, int nbr)
 {
@@ -34,6 +37,7 @@ int	find_index_b(t_stacks *stacks, int nbr)
 
 	temp = stacks->stack_b;
 	i = 0;
+	
 	while (temp->nbr != nbr)
 	{
 		i++;
@@ -156,18 +160,23 @@ int	case_rarb(t_stacks *stacks, int c)
 }
 int	apply_rarb(t_stacks *stacks, int c, char s)
 {
+	t_stack *temp_a;
+	t_stack *temp_b;
+
+	temp_a = stacks->stack_a;
+	temp_b = stacks->stack_b;
 	// printf("Empeza\n");
 	if (s == 'a')
 	{
 		// printf("Entrou na a\n");
 		// printf("O numero do stack: %d\n", stacks->stack_a->nbr);
-		while (stacks->stack_a->nbr != c && find_place_b(stacks, c) > 0)
+		while (temp_a->nbr != c && find_place_b(stacks, c) > 0)
 		{
 			rr(stacks);
-			stacks->stack_a = stacks->stack_a->next;
+			temp_a = temp_a->next;
 			// printf("Fixo o rr\n");
 		}
-		while (stacks->stack_a->nbr != c)
+		while (temp_a->nbr != c)
 		{
 			ra(stacks, 1);
 			// printf("Fixo o ra\n");
@@ -184,10 +193,10 @@ int	apply_rarb(t_stacks *stacks, int c, char s)
 	}
 	else
 	{
-		while (stacks->stack_b->nbr != c && find_place_a(stacks, c) > 0)
+		while (temp_b->nbr != c && find_place_a(stacks, c) > 0)
 			// change find_place
 			rr(stacks);
-		while (stacks->stack_b->nbr != c)
+		while (temp_b->nbr != c)
 			rb(stacks, 1);
 		int place_b = find_place_a(stacks, c);
 		while (place_b-- > 0)

@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 22:26:18 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/13 05:29:05 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/15 12:03:14 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,7 @@ int					find_place_a(t_stacks *stacks, int nbr_push);
 int					find_place_b(t_stacks *stacks, int nbr_push);
 // freess
 void				free_nbrs(char **nbrs);
+
+//quitar
+void print_stack(t_stack *stack, char *name);
 #endif
