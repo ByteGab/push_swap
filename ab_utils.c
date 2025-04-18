@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 06:35:40 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/16 22:04:53 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/17 20:09:10 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	find_index_b(t_stacks *stacks, int nbr)
 		i++;
 		temp = temp->next;
 	}
+	// printf("En find index devuelve: %d\n",i);
 	// stacks->stack_b->index = 0;
 	return (i);
 }
@@ -64,11 +65,11 @@ int	find_place_a(t_stacks *stacks, int nbr_push)
 
 	i = 1;
 	if (nbr_push < stacks->stack_a->nbr
-		&& nbr_push < last_stack(stacks->stack_a)->nbr)
+		&& nbr_push > last_stack(stacks->stack_a)->nbr)
 		i = 0;
 	else if (nbr_push > max_stack(stacks->stack_a)
 		|| nbr_push < min_stack(stacks->stack_a))
-		i = find_index_a(stacks, max_stack(stacks->stack_a));
+		i = find_index_a(stacks, min_stack(stacks->stack_a));
 	else
 	{
 		tmp = stacks->stack_a->next;
@@ -79,6 +80,7 @@ int	find_place_a(t_stacks *stacks, int nbr_push)
 			i++;
 		}
 	}
+	// printf("Find place a devuelve: %d\n",i);
 	return (i);
 }
 int	find_place_b(t_stacks *stacks, int nbr_push)
