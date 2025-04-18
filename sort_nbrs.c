@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 02:17:58 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/13 05:37:57 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/17 19:29:44 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 int	search_max(t_stacks *stacks)
 {
-	int max;
+	int		max;
 	t_stack	*temp_a;
-	
+
 	max = 0;
 	temp_a = stacks->stack_a;
 	while (temp_a != NULL)
 	{
 		if (max < temp_a->index)
-			max = temp_a->index;	
+			max = temp_a->index;
 		temp_a = temp_a->next;
 	}
 	return (max);
 }
 void	sort_three(t_stacks *stacks)
 {
-	int index_max;
+	int	index_max;
 
 	index_max = search_max(stacks);
 	if (stacks->stack_a->index == index_max)
@@ -41,15 +41,27 @@ void	sort_three(t_stacks *stacks)
 }
 void	sort_three_b(t_stacks *stacks)
 {
-	int index_max;
+	// int	index_max;
 
-	index_max = max_stack(stacks->stack_b);
-	if (stacks->stack_b->index == index_max)
-		rb(stacks, 1);
-	else if (stacks->stack_b->next->index == index_max)
-		rrb(stacks, 1);
-	if (stacks->stack_b->nbr > stacks->stack_b->next->nbr)
-		sb(stacks, 1);
+	// index_max = max_stack(stacks->stack_b);
+	if (min_stack(stacks->stack_a) == stacks->stack_a->nbr)
+	{
+		rra(stacks, 1);
+		sa(stacks, 1);
+	}
+	else if (max_stack(stacks->stack_a) == stacks->stack_a->nbr)
+	{
+		ra(stacks, 1);
+		if (!check_sort(stacks->stack_a))
+			sa(stacks, 1);
+	}
+	else
+	{
+		if (find_index_a(stacks, max_stack(stacks->stack_a)) == 1)
+			rra(stacks, 1);
+		else
+			sa(stacks, 1);
+	}
 }
 void	check_stack(t_stacks *stacks)
 {
