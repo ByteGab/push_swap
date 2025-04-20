@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 05:57:57 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/20 00:59:48 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/20 03:04:55 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	rotate_ab(t_stacks *stacks)
 			i = case_rrarb(stacks, temp->nbr);
 		temp = temp->next;
 	}
-	printf("Acabou rotate_ab: %d\n",i);
+	// printf("Acabou rotate_ab: %d\n",i);
 	return (i);
 }
 void	sort_b_next(t_stacks *stacks)
@@ -59,37 +59,37 @@ void	sort_b_next(t_stacks *stacks)
 	{
 		ft_strlen_stack(stacks);
 		temp = stacks->stack_a;
-		printf("LLega al bucle\n");
+		// printf("LLega al bucle\n");
 		i = rotate_ab(stacks);
-		printf("Saliu de rotate_ab\n");
+		// printf("Saliu de rotate_ab\n");
 		while (i >= 0)
 		{
 			if (i == case_rarb(stacks, temp->nbr))
 			{
-				printf("entrou no case_rarb\n");
+				// printf("entrou no case_rarb\n");
 				i = apply_rarb(stacks, temp->nbr, 'a');
 			}
 			else if (i == case_rrarrb(stacks, temp->nbr))
 			{
-				printf("entrou no case_rrarrb\n");
+				// printf("entrou no case_rrarrb\n");
 				i = apply_rrarrb(stacks, temp->nbr, 'a');
 			}
 			else if (i == case_rarrb(stacks, temp->nbr))
 			{
-				printf("entrou no case_rarrb\n");
+				// printf("entrou no case_rarrb\n");
 				i = apply_rarrb(stacks, temp->nbr, 'a');
 			}
 			else if (i == case_rrarb(stacks, temp->nbr))
 			{
-				printf("entrou no case_rrarb\n");
+				// printf("entrou no case_rrarb\n");
 				i = apply_rrarb(stacks, temp->nbr, 'a');
 			}
 			else
 			{
-				printf("Next\n");
+				// printf("Next\n");
 				temp = temp->next;
 			}
-			printf("Final sort_b_next\n");
+			// printf("Final sort_b_next\n");
 		}
 	}
 }
@@ -103,16 +103,12 @@ void	sort_b(t_stacks *stacks)
 	if (stacks->size_a > 3 && !check_sort(stacks->stack_a)) // check_short
 	{
 		pb(stacks);
-		print_stack(stacks->stack_a,"Stack a");
-		print_stack(stacks->stack_b,"Stack b");
+		// print_stack(stacks->stack_a,"Stack a");
+		// print_stack(stacks->stack_b,"Stack b");
 	}
 	ft_strlen_stack(stacks);
 	if (stacks->size_a > 3 && !check_sort(stacks->stack_a)) // check_short
-	{
 		pb(stacks);
-		print_stack(stacks->stack_a,"Stack a");
-		print_stack(stacks->stack_b,"Stack b");
-	}
 	ft_strlen_stack(stacks);
 	if (stacks->size_a > 3 && !check_sort(stacks->stack_a))
 	{

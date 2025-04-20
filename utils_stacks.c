@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 02:22:32 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/20 01:22:55 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/20 03:05:29 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void	sort_stacks(t_stacks *stacks)
 	ft_strlen_stack(stacks);
 	// first sort
 	sort_b(stacks);
-	printf("sort_b\n");
-	print_stack(stacks->stack_a, "Stack a");
-	print_stack(stacks->stack_b, "Stack b");
-	printf("----------------------------------------\n");
+	// printf("sort_b\n");
+	// print_stack(stacks->stack_a, "Stack a");
+	// print_stack(stacks->stack_b, "Stack b");
+	// printf("----------------------------------------\n");
 	// ft_sort_a
 	sort_a(stacks);
 	// printf("sort_a\n");
