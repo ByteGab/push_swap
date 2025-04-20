@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 02:43:14 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/17 20:14:59 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/20 01:47:30 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,13 @@ int	case_rrarrb_a(t_stacks *stacks, int c)
 	ft_strlen_stack(stacks);
 	if (find_place_a(stacks, c))
 		i = stacks->size_a - find_place_a(stacks, c);
+	ft_strlen_stack(stacks);
 	if ((i < (stacks->size_b - find_index_b(stacks, c))) && find_index_b(stacks,
 			c))
 		i = stacks->size_b - find_index_b(stacks, c);
-	// printf("case_rrarrb_a: %d\n", i);
+	printf("case_rrarrb_a: %d\n", i);
+	print_stack(stacks->stack_a, "Stack a");
+	print_stack(stacks->stack_b, "Stack b");
 	return (i);
 }
 int	rotate_ba(t_stacks *stacks)
@@ -85,6 +88,8 @@ int	rotate_ba(t_stacks *stacks)
 	tmp = stacks->stack_b;
 	// printf("Es aqui?\n");
 	i = case_rrarrb_a(stacks, stacks->stack_b->nbr);
+	print_stack(stacks->stack_a, "Stack a");
+	print_stack(stacks->stack_b, "Stack b");
 	// printf("Sale do case_rrarrb_a no rotate: %d\n", i);
 	while (tmp)
 	{
@@ -114,13 +119,15 @@ void	sort_a(t_stacks *stacks)
 
 	while (stacks->stack_b) // Mientras stack_b no esté vacío
 	{
+		print_stack(stacks->stack_a, "Stack a");
+		print_stack(stacks->stack_b, "Stack b");
 		temp_b = stacks->stack_b; // Apunta al primer nodo de stack_b
 		i = rotate_ba(stacks);    // Calcula el mejor movimiento
 		// printf("Sale do rotate_ba\n");
 		// printf("-------------------------------\n");
-		printf("Entra con valor: %d\n",i);
-		print_stack(stacks->stack_a,"Stack a");
-		print_stack(stacks->stack_b,"Stack b");
+		printf("Entra con valor: %d\n", i);
+		print_stack(stacks->stack_a, "Stack a");
+		print_stack(stacks->stack_b, "Stack b");
 		while (i >= 0 && temp_b) // Asegúrate de que temp_b no sea NULL
 		{
 			printf("Numero maldito: %d\n", i);

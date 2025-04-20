@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 05:57:57 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/17 19:45:41 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/20 00:59:48 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,15 @@ void	sort_b(t_stacks *stacks)
 	if (stacks->size_a > 3 && !check_sort(stacks->stack_a)) // check_short
 	{
 		pb(stacks);
+		print_stack(stacks->stack_a,"Stack a");
+		print_stack(stacks->stack_b,"Stack b");
 	}
 	ft_strlen_stack(stacks);
 	if (stacks->size_a > 3 && !check_sort(stacks->stack_a)) // check_short
 	{
 		pb(stacks);
+		print_stack(stacks->stack_a,"Stack a");
+		print_stack(stacks->stack_b,"Stack b");
 	}
 	ft_strlen_stack(stacks);
 	if (stacks->size_a > 3 && !check_sort(stacks->stack_a))

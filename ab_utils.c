@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 06:35:40 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/17 20:09:10 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/20 02:15:14 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 int	find_index_a(t_stacks *stacks, int nbr)
 {
-	int i = 0;
-    t_stack *temp = stacks->stack_a;
+	int		i;
+	t_stack	*temp;
 
-    if (!temp) // Verifica si stack_a está vacío
-        return (-1); // Devuelve -1 si la pila está vacía
-
-    while (temp)
-    {
-        if (temp->nbr == nbr) // Si encuentras el número, devuelve el índice
-            return (i);
-        i++;
-        temp = temp->next; // Avanza al siguiente nodo
-    }
-
-    return (-1); // Devuelve -1 si el número no se encuentra en stack_a
+	i = 0;
+	temp = stacks->stack_a;
+	if (!temp)       // Verifica si stack_a está vacío
+		return (-1); // Devuelve -1 si la pila está vacía
+	while (temp)
+	{
+		if (temp->nbr == nbr) // Si encuentras el número, devuelve el índice
+			return (i);
+		i++;
+		temp = temp->next; // Avanza al siguiente nodo
+	}
+	return (-1); // Devuelve -1 si el número no se encuentra en stack_a
 }
 int	find_index_b(t_stacks *stacks, int nbr)
 {
@@ -37,7 +37,6 @@ int	find_index_b(t_stacks *stacks, int nbr)
 
 	temp = stacks->stack_b;
 	i = 0;
-	
 	while (temp->nbr != nbr)
 	{
 		i++;
@@ -62,8 +61,12 @@ int	find_place_a(t_stacks *stacks, int nbr_push)
 {
 	int		i;
 	t_stack	*tmp;
+	t_stack	*tmp_a;
 
+	printf("Entraaaaaaa\n");
 	i = 1;
+	tmp_a = stacks->stack_a;
+	
 	if (nbr_push < stacks->stack_a->nbr
 		&& nbr_push > last_stack(stacks->stack_a)->nbr)
 		i = 0;
@@ -73,21 +76,26 @@ int	find_place_a(t_stacks *stacks, int nbr_push)
 	else
 	{
 		tmp = stacks->stack_a->next;
-		while (stacks->stack_a->nbr > nbr_push || tmp->nbr < nbr_push)
+		while (tmp_a->nbr > nbr_push || tmp->nbr < nbr_push)
 		{
-			stacks->stack_a = stacks->stack_a->next;
+			tmp_a = tmp_a->next;
 			tmp = stacks->stack_a->next;
 			i++;
 		}
+		printf("Entraaaaaaa pirobasssssssssssss\n");
+		print_stack(stacks->stack_a, "Stack a");
+		print_stack(stacks->stack_b, "Stack b");
 	}
-	// printf("Find place a devuelve: %d\n",i);
+	printf("Find place a devuelve: %d\n", i);
+	print_stack(stacks->stack_a, "Stack a");
+	print_stack(stacks->stack_b, "Stack b");
 	return (i);
 }
 int	find_place_b(t_stacks *stacks, int nbr_push)
 {
 	int		i;
 	t_stack	*tmp;
-	t_stack *head;
+	t_stack	*head;
 
 	i = 1;
 	// printf("Entrou find_place_b\n");
@@ -154,6 +162,7 @@ int	case_rrarb(t_stacks *stacks, int c)
 int	case_rarb(t_stacks *stacks, int c)
 {
 	int	i;
+
 	i = find_place_b(stacks, c);
 	if (i < find_index_a(stacks, c))
 		i = find_index_a(stacks, c);
@@ -162,8 +171,10 @@ int	case_rarb(t_stacks *stacks, int c)
 }
 int	apply_rarb(t_stacks *stacks, int c, char s)
 {
-	t_stack *temp_a;
-	t_stack *temp_b;
+	t_stack	*temp_a;
+	t_stack	*temp_b;
+	int		place;
+	int		place_b;
 
 	temp_a = stacks->stack_a;
 	temp_b = stacks->stack_b;
@@ -183,7 +194,7 @@ int	apply_rarb(t_stacks *stacks, int c, char s)
 			ra(stacks, 1);
 			// printf("Fixo o ra\n");
 		}
-		int place = find_place_b(stacks, c);
+		place = find_place_b(stacks, c);
 		while (place-- > 0)
 		{
 			rb(stacks, 1);
@@ -200,7 +211,7 @@ int	apply_rarb(t_stacks *stacks, int c, char s)
 			rr(stacks);
 		while (temp_b->nbr != c)
 			rb(stacks, 1);
-		int place_b = find_place_a(stacks, c);
+		place_b = find_place_a(stacks, c);
 		while (place_b-- > 0)
 			ra(stacks, 1);
 		pa(stacks);
