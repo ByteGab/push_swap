@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 06:35:40 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/20 02:15:14 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/20 04:44:18 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,10 @@ int	find_index_b(t_stacks *stacks, int nbr)
 
 t_stack	*last_stack(t_stack *stack)
 {
-	while (stack != NULL)
-	{
-		if (stack->next != NULL)
-			return (stack);
+	if (!stack)
+		return (NULL);
+	while (stack->next)
 		stack = stack->next;
-	}
 	return (stack);
 }
 int	find_place_a(t_stacks *stacks, int nbr_push)
@@ -63,10 +61,8 @@ int	find_place_a(t_stacks *stacks, int nbr_push)
 	t_stack	*tmp;
 	t_stack	*tmp_a;
 
-	printf("Entraaaaaaa\n");
 	i = 1;
 	tmp_a = stacks->stack_a;
-	
 	if (nbr_push < stacks->stack_a->nbr
 		&& nbr_push > last_stack(stacks->stack_a)->nbr)
 		i = 0;
@@ -75,20 +71,15 @@ int	find_place_a(t_stacks *stacks, int nbr_push)
 		i = find_index_a(stacks, min_stack(stacks->stack_a));
 	else
 	{
-		tmp = stacks->stack_a->next;
-		while (tmp_a->nbr > nbr_push || tmp->nbr < nbr_push)
+		tmp = tmp_a->next;
+		while (tmp != NULL && tmp_a != NULL && (tmp_a->nbr > nbr_push
+				|| tmp->nbr < nbr_push))
 		{
 			tmp_a = tmp_a->next;
-			tmp = stacks->stack_a->next;
+			tmp = tmp->next; // Avanzar al siguiente nodo correctamente
 			i++;
 		}
-		printf("Entraaaaaaa pirobasssssssssssss\n");
-		print_stack(stacks->stack_a, "Stack a");
-		print_stack(stacks->stack_b, "Stack b");
 	}
-	printf("Find place a devuelve: %d\n", i);
-	print_stack(stacks->stack_a, "Stack a");
-	print_stack(stacks->stack_b, "Stack b");
 	return (i);
 }
 int	find_place_b(t_stacks *stacks, int nbr_push)
@@ -186,18 +177,20 @@ int	apply_rarb(t_stacks *stacks, int c, char s)
 		while (temp_a->nbr != c && find_place_b(stacks, c) > 0)
 		{
 			rr(stacks);
-			temp_a = temp_a->next;
+			temp_a = stacks->stack_a;
 			// printf("Fixo o rr\n");
 		}
 		while (temp_a->nbr != c)
 		{
 			ra(stacks, 1);
+			temp_a = stacks->stack_a;
 			// printf("Fixo o ra\n");
 		}
 		place = find_place_b(stacks, c);
 		while (place-- > 0)
 		{
 			rb(stacks, 1);
+			temp_a = stacks->stack_a;
 			// printf("Fixo o rb\n");
 		}
 		// printf("Fixoo\n");
@@ -207,13 +200,22 @@ int	apply_rarb(t_stacks *stacks, int c, char s)
 	else
 	{
 		while (temp_b->nbr != c && find_place_a(stacks, c) > 0)
+		{
 			// change find_place
 			rr(stacks);
+			temp_b = stacks->stack_b;
+		}
 		while (temp_b->nbr != c)
+		{
 			rb(stacks, 1);
+			temp_b = stacks->stack_b;
+		}
 		place_b = find_place_a(stacks, c);
 		while (place_b-- > 0)
+		{
 			ra(stacks, 1);
+			temp_b = stacks->stack_b;
+		}
 		pa(stacks);
 	}
 	// printf("Acaba el apply");
@@ -224,21 +226,33 @@ int	apply_rrarrb(t_stacks *stacks, int c, char s)
 	if (s == 'a')
 	{
 		while (stacks->stack_a->nbr != c && find_place_b(stacks, c > 0))
+		{
 			rrr(stacks);
+		}
 		while (stacks->stack_a->nbr != c)
+		{
 			rra(stacks, 1);
+		}
 		while (find_place_b(stacks, c) > 0)
+		{
 			rrb(stacks, 1);
+		}
 		pb(stacks);
 	}
 	else
 	{
 		while (stacks->stack_b->nbr != c && find_place_a(stacks, c) > 0)
+		{
 			rrr(stacks);
+		}
 		while (stacks->stack_b->nbr != c)
+		{
 			rrb(stacks, 1);
+		}
 		while (find_place_a(stacks, c) > 0)
+		{
 			rra(stacks, 1);
+		}
 		pa(stacks);
 	}
 	return (-1);
@@ -249,17 +263,25 @@ int	apply_rarrb(t_stacks *stacks, int c, char s)
 	if (s == 'a')
 	{
 		while (stacks->stack_a->nbr != c)
+		{
 			ra(stacks, 1);
+		}
 		while (find_place_b(stacks, c) > 0)
+		{
 			rrb(stacks, 1);
+		}
 		pb(stacks);
 	}
 	else
 	{
 		while (find_place_a(stacks, c) > 0)
+		{
 			ra(stacks, 1);
+		}
 		while (stacks->stack_b->nbr != c)
+		{
 			rrb(stacks, 1);
+		}
 		pa(stacks);
 	}
 	return (-1);
@@ -267,20 +289,30 @@ int	apply_rarrb(t_stacks *stacks, int c, char s)
 
 int	apply_rrarb(t_stacks *stacks, int c, char s)
 {
+
 	if (s == 'a')
 	{
 		while (stacks->stack_a->nbr != c)
+		{
 			rra(stacks, 1);
+		}
 		while (find_place_b(stacks, c) > 0)
+		{
 			rb(stacks, 1);
+		}
 		pb(stacks);
 	}
 	else
 	{
 		while (find_place_a(stacks, c) > 0)
+		{
 			rra(stacks, 1);
+
+		}
 		while (stacks->stack_b->nbr != c)
+		{
 			rb(stacks, 1);
+		}
 		pa(stacks);
 	}
 	return (-1);
