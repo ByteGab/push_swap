@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:01:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/17 20:16:58 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/20 03:06:02 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	main(int argc, char *argv[])
 		nbrs = add_nbrs(argc, argv, nbrs, nbrs_arg);
 		stacks->stack_a = add_nbrs_stack(stacks->stack_a, nbrs, nbrs_arg);
 		// printf("-----------------------------------------------------------\n");
-		print_stack(stacks->stack_a,"Stack a");
+		// print_stack(stacks->stack_a,"Stack a");
 		check_stack(stacks); // remove nbrs_arg i guess ???
-		print_stack(stacks->stack_a,"Stack a");
-		print_stack(stacks->stack_b,"Stack b");
+		// print_stack(stacks->stack_a,"Stack a");
+		// print_stack(stacks->stack_b,"Stack b");
 
 		// free
 		free(nbrs);
