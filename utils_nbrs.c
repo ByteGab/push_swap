@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 23:58:32 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/22 03:16:14 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/22 04:44:46 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	repeat_nbrs(int *nbr, int size)
 		{
 			if (nbr[i] == nbr[j])
 			{
-				ft_putstr_fd("Error", 1);
+				ft_putstr_fd("Error", 2);
 				exit(EXIT_FAILURE);
 			}
 			j++;
@@ -69,7 +69,7 @@ int	check_nbrs(char *nbrs)
 	nbr_long = ft_atol(nbrs);
 	if (nbr_long < -2147483648 || nbr_long > 2147483648)
 	{
-		ft_putstr_fd("Error", 1);
+		ft_putstr_fd("Error", 2);
 		exit(EXIT_FAILURE);
 	}
 	nbr = ft_atoi(nbrs);

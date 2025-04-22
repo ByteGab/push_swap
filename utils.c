@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 22:14:11 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/22 03:15:30 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/22 20:06:30 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static void	check_values(char **argv, int i, int z)
 	if ((argv[i][z] < '0' || argv[i][z] > '9') && (argv[i][z] != '-'
 			&& argv[i][z] != '+'))
 	{
-		ft_putstr_fd("Error", 1);
+		ft_putstr_fd("Error", 2);
 		exit(EXIT_FAILURE);
 	}
 	if ((argv[i][z] == '-' || argv[i][z] == '+') && (argv[i][z + 1] < '0'
 			|| argv[i][z + 1] > '9'))
 	{
-		ft_putstr_fd("Error", 1);
+		ft_putstr_fd("Error", 2);
 		exit(EXIT_FAILURE);
 	}
 }

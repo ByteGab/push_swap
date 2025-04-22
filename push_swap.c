@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:01:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/22 04:00:32 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/22 04:42:36 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char *argv[])
 	if (!stacks)
 		return (0);
 	if (argc <= 1)
-		ft_putstr_fd("Error",1);
+		return (0);
 	else
 	{
 		nbrs_arg = count_values(argv, argc);
@@ -34,6 +34,7 @@ int	main(int argc, char *argv[])
 		nbrs = add_nbrs(argc, argv, nbrs, nbrs_arg);
 		stacks->stack_a = add_nbrs_stack(stacks->stack_a, nbrs, nbrs_arg);
 		check_stack(stacks);
+		clean_all(stacks, nbrs, 0);
 	}
-	return (clean_all(stacks, nbrs, 0));
+	return (0);
 }
