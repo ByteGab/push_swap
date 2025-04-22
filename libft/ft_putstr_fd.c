@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 03:13:12 by gafreire          #+#    #+#             */
-/*   Updated: 2024/10/13 17:25:52 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/22 03:56:45 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void	ft_putstr_fd(char *s, int fd)
 		write(fd, &s[i], 1);
 		i++;
 	}
+	write(1, "\n", 1);
 }
