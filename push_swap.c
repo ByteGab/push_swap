@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:01:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/20 03:06:02 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/22 04:00:32 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,26 @@
 
 int	main(int argc, char *argv[])
 {
-	t_stacks *stacks;
-	int nbrs_arg;
-	int *nbrs;
+	t_stacks	*stacks;
+	int			nbrs_arg;
+	int			*nbrs;
 
 	stacks = (t_stacks *)malloc(sizeof(t_stacks));
 	if (!stacks)
-	{
-		// printf("Error al reservar memoria para stacks\n");
-		return (1);
-	}
+		return (0);
 	if (argc <= 1)
-		printf("ERROR arg\n");
+		ft_putstr_fd("Error",1);
 	else
 	{
-		// printf("Numero de argumentos sin los string: %d\n", argc - 1);
-		nbrs_arg = count_valors(argv, argc);
-		// init stack
+		nbrs_arg = count_values(argv, argc);
 		stacks->stack_a = start_stack(nbrs_arg);
 		stacks->stack_b = start_stack(0);
-		// free stack_a
 		nbrs = (int *)malloc((nbrs_arg + 1) * sizeof(int));
 		if (!nbrs)
-			free(nbrs);
-		// free array nbrs
+			return (clean_all(stacks, NULL, 0));
 		nbrs = add_nbrs(argc, argv, nbrs, nbrs_arg);
 		stacks->stack_a = add_nbrs_stack(stacks->stack_a, nbrs, nbrs_arg);
-		// printf("-----------------------------------------------------------\n");
-		// print_stack(stacks->stack_a,"Stack a");
-		check_stack(stacks); // remove nbrs_arg i guess ???
-		// print_stack(stacks->stack_a,"Stack a");
-		// print_stack(stacks->stack_b,"Stack b");
-
-		// free
-		free(nbrs);
-		free(stacks->stack_a);
-		free(stacks->stack_b);
-		free(stacks);
+		check_stack(stacks);
 	}
-	return (0);
+	return (clean_all(stacks, nbrs, 0));
 }
