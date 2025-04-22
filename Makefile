@@ -3,7 +3,7 @@ NAME            = push_swap
 LIBFT_DIR       = ./libft
 LIBFT_LIB       = $(LIBFT_DIR)/libft.a
 
-SOURCES         = push_swap.c utils.c control_list.c utils_nbrs.c ft_free.c rotate.c swap.c push.c reverse.c sort_nbrs.c utils_stacks.c sort_stack_b.c ab_utils.c sort_stack_a.c 
+SOURCES         = push_swap.c utils.c control_list.c utils_nbrs.c ft_free.c rotate.c swap.c push.c reverse.c sort_nbrs.c utils_stacks.c sort_stack_b.c sort.c sort_stack_a.c stack_b_sort_cases.c  apply_sort.c  utils_sort_b.c utils_sort_a.c stack_a_sort_cases.c 
 OBJECTS         = $(SOURCES:.c=.o)
 
 CC              = cc
