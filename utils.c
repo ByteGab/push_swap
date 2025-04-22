@@ -6,13 +6,29 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 22:14:11 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/10 01:15:03 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/22 03:15:30 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	count_valors(char *argv[], int size)
+static void	check_values(char **argv, int i, int z)
+{
+	if ((argv[i][z] < '0' || argv[i][z] > '9') && (argv[i][z] != '-'
+			&& argv[i][z] != '+'))
+	{
+		ft_putstr_fd("Error", 1);
+		exit(EXIT_FAILURE);
+	}
+	if ((argv[i][z] == '-' || argv[i][z] == '+') && (argv[i][z + 1] < '0'
+			|| argv[i][z + 1] > '9'))
+	{
+		ft_putstr_fd("Error", 1);
+		exit(EXIT_FAILURE);
+	}
+}
+
+int	count_values(char *argv[], int size)
 {
 	int	i;
 	int	z;
@@ -23,27 +39,11 @@ int	count_valors(char *argv[], int size)
 	while (i < size)
 	{
 		z = 0;
-		// printf("%s ", argv[i]);
 		while (argv[i][z] != '\0')
 		{
 			if (argv[i][z] != ' ')
 			{
-				// Error letters
-				if ((argv[i][z] < '0' || argv[i][z] > '9') && (argv[i][z] != '-'
-						&& argv[i][z] != '+'))
-				{
-					// Change this !!!!!
-					printf("ERROR letters\n");
-					exit(EXIT_FAILURE);
-				}
-				// Error - +
-				if ((argv[i][z] == '-' || argv[i][z] == '+') && (argv[i][z + 1] < '0'
-						|| argv[i][z + 1] > '9'))
-				{
-					// Change this !!!!!
-					printf("ERROR + or -\n");
-					exit(EXIT_FAILURE);
-				}
+				check_values(argv, i, z);
 				if (argv[i][z + 1] == ' ' || argv[i][z + 1] == '\0')
 					count++;
 			}
@@ -51,7 +51,5 @@ int	count_valors(char *argv[], int size)
 		}
 		i++;
 	}
-	// printf("\n");
-	// printf("Total de números: %d\n", count);
 	return (count);
 }

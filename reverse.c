@@ -6,24 +6,20 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 23:56:54 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/07 00:00:11 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/22 03:21:07 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-// rra (reverse rotate a)
-void	rra(t_stacks *stacks,int flag)
+
+void	rra(t_stacks *stacks, int flag)
 {
 	t_stack	*head;
 	t_stack	*last_stack;
 	t_stack	*antlast_stack;
 
-	// arreglar
 	if (!stacks->stack_a || !stacks->stack_a->next)
-	{
-		printf("Vacio stacks->stack_a\n"); // quitar
 		return ;
-	}
 	head = stacks->stack_a;
 	stacks->stack_a = stacks->stack_a->next;
 	last_stack = stacks->stack_a;
@@ -36,22 +32,17 @@ void	rra(t_stacks *stacks,int flag)
 	last_stack->next = head;
 	stacks->stack_a = last_stack;
 	if (flag == 1)
-		printf("rra\n");
+		ft_putstr_fd("rra", 1);
 }
 
-// rrb (reverse rotate b)
-void	rrb(t_stacks *stacks,int flag)
+void	rrb(t_stacks *stacks, int flag)
 {
 	t_stack	*head;
 	t_stack	*last_stack;
 	t_stack	*antlast_stack;
 
-	// arreglar
 	if (!stacks->stack_b || !stacks->stack_b->next)
-	{
-		printf("Vacio stacks->stack_b\n"); // quitar
 		return ;
-	}
 	head = stacks->stack_b;
 	stacks->stack_b = stacks->stack_b->next;
 	last_stack = stacks->stack_b;
@@ -64,12 +55,12 @@ void	rrb(t_stacks *stacks,int flag)
 	last_stack->next = head;
 	stacks->stack_b = last_stack;
 	if (flag == 1)
-		printf("rrb\n");
+		ft_putstr_fd("rrb", 1);
 }
-// rrr (rra and rrb)
+
 void	rrr(t_stacks *stacks)
 {
-	rra(stacks,0);
-	rrb(stacks,0);
-	printf("rrr\n");
+	rra(stacks, 0);
+	rrb(stacks, 0);
+	ft_putstr_fd("rrr", 1);
 }

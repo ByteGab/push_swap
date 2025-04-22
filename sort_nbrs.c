@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 02:17:58 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/20 03:06:22 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/04/22 03:22:03 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	search_max(t_stacks *stacks)
 	}
 	return (max);
 }
+
 void	sort_three(t_stacks *stacks)
 {
 	int	index_max;
@@ -39,47 +40,29 @@ void	sort_three(t_stacks *stacks)
 	if (stacks->stack_a->nbr > stacks->stack_a->next->nbr)
 		sa(stacks, 1);
 }
+
 void	sort_three_b(t_stacks *stacks)
 {
-	// int	index_max;
-	// index_max = max_stack(stacks->stack_b);
 	if (min_stack(stacks->stack_a) == stacks->stack_a->nbr)
 	{
 		rra(stacks, 1);
-		// print_stack(stacks->stack_a, "Stack a");
-		// print_stack(stacks->stack_b, "Stack b");
 		sa(stacks, 1);
-		// print_stack(stacks->stack_a, "Stack a");
-		// print_stack(stacks->stack_b, "Stack b");
 	}
 	else if (max_stack(stacks->stack_a) == stacks->stack_a->nbr)
 	{
 		ra(stacks, 1);
-		// print_stack(stacks->stack_a, "Stack a");
-		// print_stack(stacks->stack_b, "Stack b");
 		if (!check_sort(stacks->stack_a))
-		{
 			sa(stacks, 1);
-			// print_stack(stacks->stack_a, "Stack a");
-			// print_stack(stacks->stack_b, "Stack b");
-		}
 	}
 	else
 	{
 		if (find_index_a(stacks, max_stack(stacks->stack_a)) == 1)
-		{
 			rra(stacks, 1);
-			// print_stack(stacks->stack_a, "Stack a");
-			// print_stack(stacks->stack_b, "Stack b");
-		}
 		else
-		{
 			sa(stacks, 1);
-			// print_stack(stacks->stack_a, "Stack a");
-			// print_stack(stacks->stack_b, "Stack b");
-		}
 	}
 }
+
 void	check_stack(t_stacks *stacks)
 {
 	int		i;
@@ -97,9 +80,7 @@ void	check_stack(t_stacks *stacks)
 		temp_a = temp_a->next;
 	}
 	ft_strlen_stack(stacks);
-	if (sort == stacks->size_a)
-		printf("Esta ordenado\n");
-	else
+	if (sort != stacks->size_a)
 	{
 		if ((stacks->size_a == 2))
 			sa(stacks, 1);

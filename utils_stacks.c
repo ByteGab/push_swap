@@ -5,38 +5,50 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 02:22:32 by gafreire          #+#    #+#             */
-/*   Updated: 2025/04/20 03:05:29 by gafreire         ###   ########.fr       */
+/*   Created: 2025/04/21 23:52:40 by gafreire          #+#    #+#             */
+/*   Updated: 2025/04/22 03:22:48 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	max_stack(t_stack *stack_a) // change names variable
+t_stack	*last_stack(t_stack *stack)
 {
-	int min_a;
-	min_a = stack_a->nbr;
-	while (stack_a != NULL)
-	{
-		if (stack_a->nbr > min_a)
-			min_a = stack_a->nbr;
-		stack_a = stack_a->next;
-	}
-	return (min_a);
+	if (!stack)
+		return (NULL);
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
 }
 
-int	min_stack(t_stack *stack_a) // change names variables
+int	max_stack(t_stack *stack)
 {
-	int max_a;
-	max_a = stack_a->nbr;
-	while (stack_a != NULL)
+	int	min;
+
+	min = stack->nbr;
+	while (stack != NULL)
 	{
-		if (stack_a->nbr < max_a)
-			max_a = stack_a->nbr;
-		stack_a = stack_a->next;
+		if (stack->nbr > min)
+			min = stack->nbr;
+		stack = stack->next;
 	}
-	return (max_a);
+	return (min);
 }
+
+int	min_stack(t_stack *stack)
+{
+	int	max;
+
+	max = stack->nbr;
+	while (stack != NULL)
+	{
+		if (stack->nbr < max)
+			max = stack->nbr;
+		stack = stack->next;
+	}
+	return (max);
+}
+
 void	ft_strlen_stack(t_stacks *stacks)
 {
 	int		size_a;
@@ -60,34 +72,4 @@ void	ft_strlen_stack(t_stacks *stacks)
 	}
 	stacks->size_a = size_a;
 	stacks->size_b = size_b;
-}
-void	sort_stacks(t_stacks *stacks)
-{
-	int i;
-
-	i = 0;
-	ft_strlen_stack(stacks);
-	// first sort
-	sort_b(stacks);
-	// printf("sort_b\n");
-	// print_stack(stacks->stack_a, "Stack a");
-	// print_stack(stacks->stack_b, "Stack b");
-	// printf("----------------------------------------\n");
-	// ft_sort_a
-	sort_a(stacks);
-	// printf("sort_a\n");
-	i = find_place_a(stacks, min_stack(stacks->stack_a));
-	ft_strlen_stack(stacks);
-	// print_stack(stacks->stack_a, "stack a");
-	if (i < stacks->size_a - i)
-	{
-		while (stacks->stack_a->nbr != min_stack(stacks->stack_a))
-			ra(stacks, 1);
-	}
-	else
-	{
-		ft_strlen_stack(stacks);
-		while (stacks->stack_a->nbr != min_stack(stacks->stack_a))
-			rra(stacks, 1);
-	}
 }
